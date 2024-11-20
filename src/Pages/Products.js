@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import products from "../Data/products.json"
@@ -15,10 +15,6 @@ export function Product() {
     categoryFilter: [],
     ratingFilter: 0
   });
-  const [status, setStatus] = useState({ bottom: false });
-  const toggleDrawer = (open) => () => {
-    setStatus({ bottom: open });
-  };
 
   const navigate = useNavigate();
 
@@ -136,17 +132,6 @@ export function Product() {
       <div className="bg-[whitesmoke] border-r-2 border-gray-500 p-8">
         <button className="border-2 border-[#514a9d] mx-8 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" onClick={() => navigate(-1)}> Back </button>
         {filterSection}
-      </div>
-      <div className="hidden">
-        <button onClick={toggleDrawer(true)} className="w-fit my-4 mx-8">Apply Filter</button>
-        {/* <Drawer
-            anchor={"bottom"}
-            open={status["bottom"]}
-            onClose={toggleDrawer(false)}
-          >
-     {filterSection}
-     <button onClick={toggleDrawer(false)} className="w-fit my-4 mx-8" >Apply Filter</button>
-          </Drawer> */}
       </div>
 
       <div className="flex flex-wrap justify-center items-center gap-4 pt-8 pb-20 bg-[whitesmoke]">
