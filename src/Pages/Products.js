@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import { ToastContainer } from "react-toastify";
 import products from "../Data/products.json"
 import categories from "../Data/categories.json"
+import { ProductContext } from "../Contexts/ProductContext";
 // import "./product.css";
 
 // import { CartContext, ProductContext } from "..";
@@ -10,7 +11,7 @@ import categories from "../Data/categories.json"
 export function Product() {
 //   const { cartNotify, deleteNotify, state, dispatch } = useContext(CartContext);
 //   const { wishListNotify, states, dispatchs } = useContext(WishListContext);
-//   const { handleProduct } = useContext(ProductContext);
+  const { handleProduct } = useContext(ProductContext);
 
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState({
@@ -193,6 +194,7 @@ export function Product() {
                   Add to Cart
                 </button>
               )} */}
+              <Link className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]" to="/productDetail" onClick={() => handleProduct(id)}> View Details </Link>
               {/* {states.wishlist.find((element) => element.id === item.id) ? (
                 <button
                   onClick={() => {
