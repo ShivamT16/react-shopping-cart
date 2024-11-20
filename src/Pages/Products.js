@@ -3,12 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 // import { ToastContainer } from "react-toastify";
 import products from "../Data/products.json"
 import categories from "../Data/categories.json"
-// import Drawer from '@mui/material/Drawer';
 // import "./product.css";
 
 // import { CartContext, ProductContext } from "..";
-
-// import { Loader } from "./Loader";
 
 export function Product() {
 //   const { cartNotify, deleteNotify, state, dispatch } = useContext(CartContext);
@@ -26,7 +23,7 @@ export function Product() {
     setStatus({ bottom: open });
   };
 
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     Mainfunction();
@@ -93,7 +90,7 @@ export function Product() {
 
   const filterSection = (
     <form className="py-1 px-2" onReset={handleClearFilter}>
-          <button className="border-2 border-[#514a9d] m-1 my-2 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" type="reset">Clear Filters</button>
+          <button className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]" type="reset">Clear Filters</button>
           <p className="w-[10rem] text-left text-xl my-2">
             <strong>Price </strong>
           </p>
@@ -151,7 +148,7 @@ export function Product() {
   return (
     <div className="flex">
       <div className="bg-[whitesmoke] border-r-2 border-gray-500 p-8">
-        {/* <button onClick={() => navigate(-1)}> Back </button> */}
+        <button className="border-2 border-[#514a9d] mx-8 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" onClick={() => navigate(-1)}> Back </button>
         {filterSection}
       </div>
       <div className="hidden">
@@ -166,7 +163,6 @@ export function Product() {
           </Drawer> */}
       </div>
 
-      {/* {loading && <Loader />} */}
       <div className="flex flex-wrap justify-center items-center gap-4 pt-8 pb-20 bg-[whitesmoke]">
         {ratingFiltered.map((item) => {
           const { id, name, price, image, rating } = item;

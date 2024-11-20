@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { Home } from "./Pages/Home";
 import { Product } from "./Pages/Products";
+import { CategoryWise } from "./Pages/CategoryWise";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
         {/* <Route path="/address" element={<Addresses />} /> */}
         {/* <Route path="/checkout" element={<Checkout />} /> */}
-        {/* <Route path="/category" element={<CategoryWise products={DataBase} />} /> */}
+        <Route path="/category" element={<CategoryWise />} />
       </Routes>
     </div>
   );
