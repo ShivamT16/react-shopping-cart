@@ -1,19 +1,15 @@
 import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import products from "../Data/products.json"
 import categories from "../Data/categories.json"
 import { ProductContext } from "../Contexts/ProductContext";
-// import "./product.css";
-
-// import { CartContext, ProductContext } from "..";
+import { CartContext } from "../Contexts/CartContext";
 
 export function Product() {
-//   const { cartNotify, deleteNotify, state, dispatch } = useContext(CartContext);
-//   const { wishListNotify, states, dispatchs } = useContext(WishListContext);
+  const { cartNotify, state, dispatch } = useContext(CartContext);
   const { handleProduct } = useContext(ProductContext);
 
-  const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState({
     sortFilter: "",
     categoryFilter: [],
@@ -25,17 +21,6 @@ export function Product() {
   };
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    Mainfunction();
-  }, []);
-
-  const Mainfunction = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  };
 
   const handleClearFilter = () => {
     setFilter({
@@ -171,7 +156,6 @@ export function Product() {
             <div
               key={id}
               className="border border-[#514a9d] p-4 rounded-[20px]"
-            //   onClick={() => handleProduct(id)}
             >
               <div >
                 <img className="h-64 w-60 border border-[#24c6dc] rounded-2xl p-4 bg-white" alt="product img" src={image} />
@@ -180,47 +164,29 @@ export function Product() {
                   INR:{price}  ⭐{rating}
                 </p>
               </div>
-              {/* {state.cart.find((element) => element.id === item.id) ? (
-                <Link to="/cart">
-                  <button> Go to Cart</button>
+
+              {state.cart.find((element) => element.id === item.id) ? (
+                <Link to="/cart" className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]">
+                 Go to Cart
                 </Link>
               ) : (
-                <button
+                <Link
+                  className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]"
                   onClick={() => {
                     dispatch({type:"ADD_TO_CART", payload: item})
                     cartNotify();
                   }}
                 >
                   Add to Cart
-                </button>
-              )} */}
-              <Link className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]" to="/productDetail" onClick={() => handleProduct(id)}> View Details </Link>
-              {/* {states.wishlist.find((element) => element.id === item.id) ? (
-                <button
-                  onClick={() => {
-                    dispatchs({type:"REMOVE_FROM_WISHLIST", payload: id})
-                    deleteNotify();
-                  }}
-                >
-                  Remove from Favourite
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    dispatchs({type:"ADD_TO_WISHLIST", payload: item})
-                    wishListNotify();
-
-                  }}
-                >
-                  Add to Favourite
-                </button>
-              )} */}
+                </Link>
+              )}
+              <Link className="border-2 border-[#514a9d] mx-2 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" to="/productDetail" onClick={() => handleProduct(id)}> View Details </Link>
 
             </div>
           );
         })}
       </div>
-      {/* <ToastContainer autoClose={2000} /> */}
+      <ToastContainer autoClose={2000} />
     </div>
   );
 }

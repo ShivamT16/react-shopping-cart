@@ -7,7 +7,7 @@ export const Home = () => {
   const { handleCategory } = useContext(ProductContext);
 
   return (
-    <div className="flex flex-wrap justify-center items-center gap-16 p-4 bg-[whitesmoke] h-screen font-cursive">
+    <div className="flex flex-wrap justify-center items-center gap-16 p-4 bg-[whitesmoke] mt-28 font-cursive">
       {
         categories.category.map((items) => 
         <Link key={items._id} onClick={() => handleCategory(items.category)} to="/category">

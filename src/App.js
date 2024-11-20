@@ -5,6 +5,7 @@ import { Product } from "./Pages/Products";
 import { CategoryWise } from "./Pages/CategoryWise";
 import { ProductDetail } from "./Pages/ProductDetail";
 import { Navbar } from "./Navbar";
+import { Cart } from "./Pages/Cart";
 
 function App() {
   return (
@@ -14,12 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/productDetail" element={<ProductDetail />} />
-        {/* <Route path="/cart" element={ <RequiresAuth> <Cart /> </RequiresAuth> } /> */}
-        {/* <Route path="/wishList" element={ <RequiresAuth> <WishList /> </RequiresAuth> } /> */}
-        {/* <Route path="/signup" element={<SignUp />} /> */}
-        {/* <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/address" element={<Addresses />} /> */}
-        {/* <Route path="/checkout" element={<Checkout />} /> */}
+        <Route path="/cart" element={<Cart /> } />
         <Route path="/category" element={<CategoryWise />} />
       </Routes>
     </div>

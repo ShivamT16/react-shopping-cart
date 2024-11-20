@@ -1,15 +1,13 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import products from "../Data/products.json"
 
 import { ProductContext } from "../Contexts/ProductContext";
-
-// import { CartContext, WishListContext, ProductContext } from "..";
+import { CartContext } from "../Contexts/CartContext";
 
 export const ProductDetail = () => {
-  // const { cartNotify, deleteNotify, state, dispatch } = useContext(CartContext);
-  // const { wishListNotify,states, dispatchs } = useContext(WishListContext);
+  const { cartNotify, state, dispatch } = useContext(CartContext);
   const { product } = useContext(ProductContext);
   
   return (
@@ -29,45 +27,28 @@ export const ProductDetail = () => {
                 <div className="w-[50rem] text-justify p-6 m-4">
                   <p> {description} </p>
 
-                  {/* {state.cart.find((element) => element.id === item.id) ? (
-                    <Link to="/cart">
-                      <button> Go to Cart</button>
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        cartNotify();
-                        dispatch({type:"ADD_TO_CART", payload: item})
-                      }}
-                    >
-                      Add to Cart
-                    </button>
-                  )}
-                  {states.wishlist.find((element) => element.id === item.id) ? (
-                <button
-                  onClick={() => {
-                    dispatchs({type:"REMOVE_FROM_WISHLIST", payload: id})
-                    deleteNotify();
-                  }}
-                >
-                  Remove from Favourite
-                </button>
+                {state.cart.find((element) => element.id === item.id) ? (
+                <Link to="/cart" className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]">
+                 Go to Cart
+                </Link>
               ) : (
-                <button
+                <Link
+                  className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]"
                   onClick={() => {
-                    dispatchs({type:"ADD_TO_WISHLIST", payload: item})
-                    wishListNotify();
+                    dispatch({type:"ADD_TO_CART", payload: item})
+                    cartNotify();
                   }}
                 >
-                  Add to Favourite
-                </button>
-              )} */}
+                  Add to Cart
+                </Link>
+              )}
+                  
                 </div>
               </div>
             </div>
           );
         })}
-      {/* <ToastContainer autoClose={2000} /> */}
+      <ToastContainer autoClose={2000} />
     </div>
   );
 };

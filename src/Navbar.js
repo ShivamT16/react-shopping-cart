@@ -3,10 +3,12 @@ import { useState, useContext } from "react";
 
 import products from "./Data/products.json"
 import { ProductContext } from "./Contexts/ProductContext";
+import { CartContext } from "./Contexts/CartContext";
 
 export const Navbar = () => {
 
   const [search, setSearch] = useState("");
+  const {state} = useContext(CartContext);
   const { handleProduct } = useContext(ProductContext);
 
     return (
@@ -30,7 +32,7 @@ export const Navbar = () => {
             Explore
           </NavLink>
           <NavLink className="text-white" to="/cart">
-            Cart
+            Cart 🛒{state.cart.length === 0 ? "" : state.cart.length}
           </NavLink>
         </div>
       </nav>
