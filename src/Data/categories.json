@@ -1,0 +1,20 @@
+{
+    "category": [
+        {
+            "_id": 1,
+            "category": "Wired",
+            "imageLink": "https://m.media-amazon.com/images/I/21LFGMQR-EL._AC_UL400_.jpg"
+        },
+        {
+            "_id": 2,
+            "category": "Wireless",
+            "imageLink": "https://m.media-amazon.com/images/I/51kywrQpbQL._AC_UL400_.jpg"
+        },
+        {
+            "_id": 3,
+            "category": "Speaker",
+            "imageLink":
+              "https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/a9c78ebe-9361-411a-a94d-66b1d3f258ba._CR0,0,1200,628_SX430_QL70_.jpg"
+        }
+    ]
+}
