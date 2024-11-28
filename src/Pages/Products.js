@@ -5,10 +5,11 @@ import products from "../Data/products.json"
 import categories from "../Data/categories.json"
 import { ProductContext } from "../Contexts/ProductContext";
 import { CartContext } from "../Contexts/CartContext";
+import { ProductDetail } from "./ProductDetail";
 
 export function Product() {
   const { cartNotify, state, dispatch } = useContext(CartContext);
-  const { handleProduct } = useContext(ProductContext);
+  const { handleProduct, handleOpen } = useContext(ProductContext);
 
   const [filter, setFilter] = useState({
     sortFilter: "",
@@ -165,12 +166,13 @@ export function Product() {
                   Add to Cart
                 </Link>
               )}
-              <Link className="border-2 border-[#514a9d] mx-2 py-1 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" to="/productDetail" onClick={() => handleProduct(id)}> View Details </Link>
+              <Link className="border-2 border-[#514a9d] mx-2 py-1 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" onClick={() => {handleProduct(id); handleOpen()}} > View Details </Link>
 
             </div>
           );
         })}
       </div>
+      <ProductDetail />
       <ToastContainer autoClose={2000} />
     </div>
   );
