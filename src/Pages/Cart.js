@@ -28,15 +28,19 @@ export const Cart = () => {
                 <ul>{name}</ul>
                 <ul>INR:{price}</ul>
                 <div>
-                  <button
+                { quantity === 1 ? 
+                 <button className="border-2 border-[#514a9d] px-2 mx-1 rounded-lg bg-white hover:bg-[lightgray]"
+                    onClick={() => {
+                        deleteNotify();
+                        dispatch({type: "REMOVE_FROM_CART", payload: id})
+                    }}
+                 > - </button> :
+                 <button
                   className="border-2 border-[#514a9d] px-2 mx-1 rounded-lg bg-white hover:bg-[lightgray]"
                     onClick={() => 
                       dispatch({type: "DECREASE_QUANTITY", payload: item})
                     }
-                    disabled={quantity === 1}
-                  >
-                    -
-                  </button>
+                  > - </button> }
                   {quantity}
                   <button
                   className="border-2 border-[#514a9d] px-2 mx-1 rounded-lg bg-white hover:bg-[lightgray]"
@@ -48,9 +52,9 @@ export const Cart = () => {
                     +
                   </button>
                 </div>
+
                 <button
                 className="border-2 border-[#514a9d] px-2 my-2 rounded-lg bg-white hover:bg-[lightgray]"
-                  type="button"
                   onClick={() => {
                     deleteNotify();
                     dispatch({type: "REMOVE_FROM_CART", payload: id})

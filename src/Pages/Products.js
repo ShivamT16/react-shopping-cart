@@ -145,18 +145,18 @@ export function Product() {
               <div >
                 <img className="h-64 w-60 border border-[#24c6dc] rounded-2xl p-4 bg-white" alt="product img" src={image} />
                 <ul>{name}</ul>
-                <p>
+                <p className="mb-4" >
                   INR:{price}  ⭐{rating}
                 </p>
               </div>
 
               {state.cart.find((element) => element.id === item.id) ? (
-                <Link to="/cart" className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]">
-                 Go to Cart
+                <Link to="/cart" className="border-2 border-lime-600 py-1 px-2.5 text-sm rounded-lg bg-lime-500 hover:bg-lime-300">
+                 Added To Cart
                 </Link>
               ) : (
                 <Link
-                  className="border-2 border-[#514a9d] px-2.5 rounded-lg bg-white hover:bg-[lightgray]"
+                  className="border-2 border-[#514a9d] py-1 px-2.5 rounded-lg bg-white hover:bg-[lightgray]"
                   onClick={() => {
                     dispatch({type:"ADD_TO_CART", payload: item})
                     cartNotify();
@@ -165,7 +165,7 @@ export function Product() {
                   Add to Cart
                 </Link>
               )}
-              <Link className="border-2 border-[#514a9d] mx-2 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" to="/productDetail" onClick={() => handleProduct(id)}> View Details </Link>
+              <Link className="border-2 border-[#514a9d] mx-2 py-1 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" to="/productDetail" onClick={() => handleProduct(id)}> View Details </Link>
 
             </div>
           );
