@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import Drawer from '@mui/material/Drawer';
+
 import products from "../Data/products.json"
 import categories from "../Data/categories.json"
 import { ProductContext } from "../Contexts/ProductContext";
@@ -16,6 +18,10 @@ export function Product() {
     categoryFilter: [],
     ratingFilter: 0
   });
+  const [status, setStatus] = useState({ bottom: false });
+  const toggleDrawer = (open) => () => {
+    setStatus({ bottom: open });
+  };
 
   const navigate = useNavigate();
 
@@ -129,10 +135,22 @@ export function Product() {
   )
 
   return (
-    <div className="flex">
-      <div className="bg-[whitesmoke] border-r-2 border-gray-500 p-8">
+    <div className="flex bg-[whitesmoke] max-[768px]:flex-col">
+      <div className="border-r-2 border-gray-500 p-8 max-[768px]:hidden">
         <button className="border-2 border-[#514a9d] mx-8 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" onClick={() => navigate(-1)}> Back </button>
         {filterSection}
+      </div>
+
+      <div className="flex flex-row flex-wrap shrink-0 bg-[whitesmoke] md:hidden">
+        <button onClick={toggleDrawer(true)} className="border-2 border-[#514a9d] w-fit h-fit my-2 mx-8 px-2.5 rounded-lg bg-white hover:bg-[lightgray]">Apply Filter</button>
+        <Drawer
+            anchor={"bottom"}
+            open={status["bottom"]}
+            onClose={toggleDrawer(false)}
+          >
+     {filterSection}
+     <button onClick={toggleDrawer(false)} className="border-2 border-[#514a9d] w-fit h-fit my-2 mx-8 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" >Apply Filter</button>
+          </Drawer>
       </div>
 
       <div className="flex flex-wrap justify-center items-center gap-4 pt-8 pb-20 bg-[whitesmoke]">

@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./Pages/Home";
 import { Product } from "./Pages/Products";
 import { CategoryWise } from "./Pages/CategoryWise";
-import { ProductDetail } from "./Pages/ProductDetail";
 import { Navbar } from "./Navbar";
 import { Cart } from "./Pages/Cart";
 
