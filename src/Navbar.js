@@ -19,7 +19,7 @@ export const Navbar = () => {
         </NavLink>
         <div>
           <input
-            className="h-8 w-[20rem] text-base rounded-[2rem] px-2.5 border-none hover:bg-[lightgray]"
+            className="h-8 w-[15rem] text-base rounded-[2rem] px-2.5 border-none hover:bg-[lightgray] md:w-[20rem]"
             type="text"
             value={search}
             placeholder="Search"

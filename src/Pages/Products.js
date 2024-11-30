@@ -159,15 +159,15 @@ export function Product() {
           return (
             <div
               key={id}
-              className="border border-[#514a9d] p-4 rounded-[20px]"
+              className="border border-[#514a9d] p-4 rounded-[20px] md:flex gap-1 items-center"
             >
-              <div >
-                <img className="h-64 w-60 border border-[#24c6dc] rounded-2xl p-4 bg-white" alt="product img" src={image} />
-                <ul>{name}</ul>
-                <p className="mb-4" >
+
+                <img className="h-52 w-52 border border-[#24c6dc] rounded-2xl p-4 bg-white md:h-56 w-52" alt="product img" src={image} />
+             <div>   
+                <p className="text-xl font-medium"> {name} </p>
+                <p className="text-lg mb-4" >
                   INR:{price}  ⭐{rating}
                 </p>
-              </div>
 
               {state.cart.find((element) => element.id === item.id) ? (
                 <Link to="/cart" className="border-2 border-lime-600 py-1 px-2.5 text-sm rounded-lg bg-lime-500 hover:bg-lime-300">
@@ -175,7 +175,7 @@ export function Product() {
                 </Link>
               ) : (
                 <Link
-                  className="border-2 border-[#514a9d] py-1 px-2.5 rounded-lg bg-white hover:bg-[lightgray]"
+                  className="border-2 border-[#514a9d] py-0.5 px-1 rounded-lg bg-white hover:bg-[lightgray]"
                   onClick={() => {
                     dispatch({type:"ADD_TO_CART", payload: item})
                     cartNotify();
@@ -184,7 +184,8 @@ export function Product() {
                   Add to Cart
                 </Link>
               )}
-              <Link className="border-2 border-[#514a9d] mx-2 py-1 px-2.5 rounded-lg bg-white hover:bg-[lightgray]" onClick={() => {handleProduct(id); handleOpen()}} > View Details </Link>
+              <Link className="border-2 border-[#514a9d] mx-2 py-0.5 px-1 rounded-lg bg-white hover:bg-[lightgray]" onClick={() => {handleProduct(id); handleOpen()}} > View Details </Link>
+            </div>
 
             </div>
           );
